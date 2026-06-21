@@ -6,6 +6,7 @@
   <title>瘦吧 WorkBuddy Skill 中心</title>
   <style>
     :root {
+      --green-950: #0d2d23;
       --green-900: #12382b;
       --green-800: #17513d;
       --green-700: #1d6b4c;
@@ -13,12 +14,15 @@
       --green-100: #e7f6ee;
       --green-50: #f4fbf7;
       --yellow: #ffe9a8;
+      --orange: #ffb35c;
+      --blue: #e8f1ff;
       --text: #18342a;
       --muted: #6b7d75;
       --line: #dcebe4;
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(18, 56, 43, 0.12);
       --radius: 22px;
+      --sidebar-width: 280px;
     }
 
     * { box-sizing: border-box; }
@@ -28,8 +32,8 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 10% 0%, rgba(255, 233, 168, 0.55), transparent 32%),
-        radial-gradient(circle at 90% 10%, rgba(35, 134, 94, 0.18), transparent 28%),
+        radial-gradient(circle at 8% 0%, rgba(255, 233, 168, 0.55), transparent 30%),
+        radial-gradient(circle at 95% 12%, rgba(35, 134, 94, 0.18), transparent 30%),
         linear-gradient(180deg, #f7fbf8 0%, #eff8f3 48%, #ffffff 100%);
       min-height: 100vh;
     }
@@ -37,16 +41,16 @@
     a { color: inherit; }
 
     .page {
-      max-width: 1180px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 28px 20px 54px;
+      padding: 24px 20px 48px;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
       border-radius: 32px;
-      padding: 44px 42px;
+      padding: 38px 42px;
       color: var(--white);
       background:
         linear-gradient(135deg, rgba(18, 56, 43, 0.98), rgba(29, 107, 76, 0.95)),
@@ -57,10 +61,10 @@
     .hero::after {
       content: "";
       position: absolute;
-      right: -80px;
-      bottom: -90px;
-      width: 280px;
-      height: 280px;
+      right: -76px;
+      bottom: -110px;
+      width: 310px;
+      height: 310px;
       border-radius: 50%;
       background: rgba(255, 233, 168, 0.22);
     }
@@ -78,99 +82,268 @@
     }
 
     h1 {
-      margin: 22px 0 14px;
-      font-size: clamp(34px, 5vw, 58px);
+      margin: 18px 0 12px;
+      font-size: clamp(34px, 4.2vw, 56px);
       line-height: 1.04;
       letter-spacing: -0.05em;
     }
 
     .hero p {
-      max-width: 760px;
+      max-width: 860px;
       margin: 0;
       color: rgba(255, 255, 255, 0.84);
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.8;
     }
 
-    .hero-actions {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      gap: 10px;
+      margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .btn {
+    .hero-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 14px 36px rgba(18, 56, 43, 0.08);
+      padding: 18px;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+    }
+
+    .sidebar h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: var(--green-900);
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0 12px;
+      font-size: 14px;
+      outline: none;
+      color: var(--text);
+      background: #fbfdfc;
+    }
+
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .category-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: 16px;
+      padding: 12px;
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .category-btn:hover {
+      background: var(--green-50);
+    }
+
+    .category-btn.active {
+      background: var(--green-800);
+      color: var(--white);
+      box-shadow: 0 12px 24px rgba(23, 81, 61, 0.18);
+    }
+
+    .cat-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .cat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      background: var(--green-100);
+      flex: 0 0 auto;
+      font-weight: 800;
+    }
+
+    .category-btn.active .cat-icon {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .cat-name {
+      font-weight: 800;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--yellow); color: #314018; box-shadow: 0 12px 28px rgba(0,0,0,0.16); }
-    .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.09); }
-    .btn-green { background: var(--green-700); color: var(--white); }
-    .btn-soft { background: var(--green-100); color: var(--green-800); }
-    .btn-line { border-color: var(--line); color: var(--green-800); background: var(--white); }
-
-    .section { margin-top: 34px; }
-
-    .section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section h2 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.03em;
-    }
-
-    .section-note {
-      margin: 6px 0 0;
+    .cat-desc {
+      display: block;
       color: var(--muted);
-      line-height: 1.7;
+      font-size: 12px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .grid {
+    .category-btn.active .cat-desc {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .cat-count {
+      min-width: 26px;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef7f2;
+      color: var(--green-800);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .category-btn.active .cat-count {
+      background: var(--yellow);
+      color: #314018;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .toolbar {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 10px 28px rgba(18, 56, 43, 0.06);
+    }
+
+    .toolbar h2 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--green-900);
+    }
+
+    .toolbar p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stat {
+      min-width: 92px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: var(--green-50);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green-800);
+      font-size: 20px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .skill-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(220, 235, 228, 0.94);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 34px rgba(18, 56, 43, 0.08);
-      padding: 24px;
+      gap: 16px;
     }
 
     .skill-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(18, 56, 43, 0.08);
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      min-height: 100%;
+      min-height: 330px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(18, 56, 43, 0.12);
     }
 
     .skill-top {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 10px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .badge {
@@ -183,109 +356,141 @@
       color: var(--green-800);
       border: 1px solid var(--line);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.hot { background: #fff6d8; color: #76560a; border-color: #f5dda4; }
+    .badge.beta { background: var(--blue); color: #285183; border-color: #d5e5ff; }
+
+    .version {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
     }
 
     .skill-title {
       margin: 0 0 8px;
-      font-size: 24px;
-      color: var(--green-900);
+      font-size: 23px;
+      color: var(--green-950);
+      letter-spacing: -0.02em;
     }
 
     .skill-id {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       background: #f7faf8;
       padding: 7px 9px;
       border-radius: 10px;
       display: inline-block;
       word-break: break-all;
+      margin-bottom: 14px;
     }
 
     .desc {
       color: #40594f;
-      line-height: 1.75;
-      margin: 16px 0;
+      line-height: 1.72;
+      margin: 0 0 14px;
+      font-size: 14px;
     }
 
-    .list {
+    .features {
       margin: 0;
       padding-left: 18px;
       color: #40594f;
-      line-height: 1.9;
+      line-height: 1.86;
+      font-size: 14px;
     }
 
     .actions {
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 18px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
     }
 
-    .workflow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .step {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      position: relative;
-      min-height: 150px;
-    }
-
-    .step-num {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--green-700);
-      color: var(--white);
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
       font-weight: 800;
-      margin-bottom: 12px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
     }
 
-    .step h3 { margin: 0 0 8px; font-size: 17px; }
-    .step p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-green { background: var(--green-700); color: var(--white); }
+    .btn-soft { background: var(--green-100); color: var(--green-800); }
+    .btn-line { border-color: var(--line); color: var(--green-800); background: var(--white); }
+    .btn-yellow { background: var(--yellow); color: #314018; }
 
-    .install {
+    .empty {
+      padding: 48px;
+      text-align: center;
+      border: 1px dashed var(--line);
+      border-radius: 24px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .guide {
+      margin-top: 22px;
+      background: var(--green-950);
+      color: #eaf8ef;
+      border-radius: 24px;
+      padding: 22px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
       gap: 18px;
     }
+
+    .guide h3 { margin: 0 0 10px; font-size: 20px; }
+    .guide p { margin: 0; color: rgba(234,248,239,0.8); line-height: 1.75; }
 
     pre {
       margin: 0;
       overflow-x: auto;
-      padding: 18px;
+      padding: 16px;
       border-radius: 18px;
-      background: #102b22;
+      background: rgba(255,255,255,0.08);
       color: #eaf8ef;
       line-height: 1.7;
       font-size: 13px;
     }
 
-    .small { font-size: 13px; color: var(--muted); line-height: 1.7; }
-
     .footer {
-      margin-top: 34px;
+      margin-top: 32px;
       color: var(--muted);
       text-align: center;
       font-size: 13px;
     }
 
-    @media (max-width: 860px) {
-      .hero { padding: 34px 24px; }
-      .grid, .install, .workflow { grid-template-columns: 1fr; }
-      .section-head { display: block; }
-      .hero-actions, .actions { flex-direction: column; }
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; max-height: none; }
+      .category-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .skill-grid { grid-template-columns: 1fr; }
+      .guide { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 16px 12px 36px; }
+      .hero { padding: 30px 22px; border-radius: 24px; }
+      .toolbar { display: block; }
+      .stats { justify-content: flex-start; margin-top: 14px; }
+      .category-list { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; }
       .btn { width: 100%; }
     }
   </style>
@@ -293,127 +498,254 @@
 <body>
   <main class="page">
     <section class="hero">
-      <span class="eyebrow">瘦吧 · WorkBuddy Skill Center</span>
-      <h1>小红书热点跟踪与选题卡 Skill</h1>
-      <p>这个页面用于展示 GitHub 仓库中的两个 WorkBuddy Skill。用户下载仓库后，可直接打开本页面查看 Skill 说明、阅读使用文档，并点击下载对应 Skill 安装包。</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="dist/shouba-hotspot-tracking.zip" download>下载热点跟踪 Skill</a>
-        <a class="btn btn-primary" href="dist/shouba-xhs-topic-card.zip" download>下载选题卡 Skill</a>
-        <a class="btn btn-ghost" href="README.md">查看 README</a>
-      </div>
+      <span class="eyebrow">瘦吧 · WorkBuddy Skill Library</span>
+      <h1>可扩展 Skill 中心</h1>
+      <p>面向未来上百个 Skill 的统一展示页：左侧按业务类目筛选，右侧以卡片展示 Skill 说明、使用文档和安装包下载入口。新增 Skill 时，只需要在页面下方的 skillCatalog 数据中增加一条配置。</p>
+      <div class="hero-meta" id="heroMeta"></div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>仓库中的 Skill</h2>
-          <p class="section-note">两个 Skill 形成一条清晰链路：先中立跟踪热点，再结合产品库生成选题卡。</p>
+    <section class="layout">
+      <aside class="sidebar">
+        <h2>Skill 类目</h2>
+        <div class="search-box">
+          <input id="searchInput" type="search" placeholder="搜索 Skill 名称 / 说明 / 标签" />
         </div>
-      </div>
-      <div class="grid">
-        <article class="card skill-card">
-          <div class="skill-top">
-            <span class="badge">上游 · 热点数据</span>
-            <span class="badge">中立抓取</span>
-          </div>
-          <h3 class="skill-title">瘦吧热点跟踪skill</h3>
-          <span class="skill-id">skills/shouba-hotspot-tracking</span>
-          <p class="desc">从 UApiPro 获取小红书热榜，输出原始、可追溯的热点列表。它只负责热点跟踪，不做产品匹配、用户痛点推断、机会判断或内容建议。</p>
-          <ul class="list">
-            <li>获取 UApiPro 小红书热榜</li>
-            <li>保留排名、标题、热度值、链接、抓取时间</li>
-            <li>输出中立热点跟踪报告</li>
-            <li>作为后续产品匹配和选题卡生成的输入</li>
-          </ul>
-          <div class="actions">
-            <a class="btn btn-green" href="dist/shouba-hotspot-tracking.zip" download>下载安装包</a>
-            <a class="btn btn-soft" href="docs/瘦吧热点跟踪skill_使用说明.md">使用说明</a>
-            <a class="btn btn-line" href="skills/shouba-hotspot-tracking/SKILL.md">查看 SKILL.md</a>
-          </div>
-        </article>
+        <div class="category-list" id="categoryList"></div>
+      </aside>
 
-        <article class="card skill-card">
-          <div class="skill-top">
-            <span class="badge">下游 · 业务转化</span>
-            <span class="badge">产品匹配</span>
+      <section class="content">
+        <div class="toolbar">
+          <div>
+            <h2 id="currentTitle">全部 Skill</h2>
+            <p id="currentDesc">查看当前仓库中的全部 Skill。</p>
           </div>
-          <h3 class="skill-title">瘦吧小红书选题卡skill</h3>
-          <span class="skill-id">skills/shouba-xhs-topic-card</span>
-          <p class="desc">基于热点数据和用户提供的产品库，评估热点与产品的匹配度，并输出标准化小红书选题卡，交给后续内容智能体生成文案。</p>
-          <ul class="list">
-            <li>接收热点数据和产品库</li>
-            <li>评估话题、场景、痛点和产品植入自然度</li>
-            <li>输出小红书选题卡</li>
-            <li>为内容智能体提供结构化输入</li>
-          </ul>
-          <div class="actions">
-            <a class="btn btn-green" href="dist/shouba-xhs-topic-card.zip" download>下载安装包</a>
-            <a class="btn btn-soft" href="docs/瘦吧小红书选题卡skill_使用说明.md">使用说明</a>
-            <a class="btn btn-line" href="skills/shouba-xhs-topic-card/SKILL.md">查看 SKILL.md</a>
+          <div class="stats">
+            <div class="stat"><strong id="totalCount">0</strong><span>全部 Skill</span></div>
+            <div class="stat"><strong id="visibleCount">0</strong><span>当前显示</span></div>
           </div>
-        </article>
-      </div>
-    </section>
+        </div>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>推荐使用流程</h2>
-          <p class="section-note">这个流程可以用于培训演示，也可以作为内容团队的日常小红书选题工作流。</p>
-        </div>
-      </div>
-      <div class="workflow">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>跟踪热点</h3>
-          <p>使用“瘦吧热点跟踪skill”从 UApiPro 获取当前小红书热榜，只保留原始热点数据。</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>输入产品库</h3>
-          <p>提供产品名称、卖点、人群、场景、用户痛点、可表达利益点和风险边界。</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>生成选题卡</h3>
-          <p>使用“瘦吧小红书选题卡skill”评估热点与产品匹配度，并生成标准选题卡。</p>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <h3>交给智能体</h3>
-          <p>把选题卡交给小红书内容智能体，继续生成标题、封面、正文和评论引导。</p>
-        </div>
-      </div>
-    </section>
+        <div class="skill-grid" id="skillGrid"></div>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>下载后如何安装</h2>
-          <p class="section-note">下载 zip 后，可解压到 WorkBuddy 用户 Skill 目录，或按团队内部流程导入。</p>
-        </div>
-      </div>
-      <div class="install">
-        <div class="card">
-          <h3>方式一：通过页面下载</h3>
-          <p class="desc">点击上方“下载安装包”，下载对应 zip 文件，再按照 WorkBuddy 的 Skill 导入流程安装。</p>
-          <div class="actions">
-            <a class="btn btn-green" href="dist/shouba-hotspot-tracking.zip" download>下载热点跟踪 Skill</a>
-            <a class="btn btn-green" href="dist/shouba-xhs-topic-card.zip" download>下载选题卡 Skill</a>
+        <div class="guide">
+          <div>
+            <h3>下载后如何安装</h3>
+            <p>点击卡片上的“下载安装包”可下载 zip；也可以下载整个 GitHub 仓库后，手动复制源码目录到 WorkBuddy 用户 Skill 目录。</p>
           </div>
-        </div>
-        <div class="card">
-          <h3>方式二：手动复制源码目录</h3>
           <pre>cp -R skills/shouba-hotspot-tracking ~/.workbuddy/skills/
 cp -R skills/shouba-xhs-topic-card ~/.workbuddy/skills/</pre>
-          <p class="small">复制后如 WorkBuddy 未立即识别，可重启 WorkBuddy 或重新打开对话。</p>
         </div>
-      </div>
+      </section>
     </section>
 
     <footer class="footer">
-      slimclubskill · GitHub Skill Archive · 本页面可本地打开，也可通过 GitHub Pages 发布。
+      slimclubskill · GitHub Skill Archive · 支持按类目扩展上百个 WorkBuddy Skill
     </footer>
   </main>
+
+  <script>
+    const skillCatalog = [
+      {
+        id: "shouba-hotspot-tracking",
+        name: "瘦吧热点跟踪skill",
+        category: "小红书运营",
+        categoryDesc: "热点、趋势、内容机会",
+        icon: "热",
+        version: "v0.1.0",
+        status: "已安装包",
+        level: "上游",
+        tags: ["中立抓取", "UApiPro", "小红书热榜"],
+        description: "从 UApiPro 获取小红书热榜，输出原始、可追溯的热点列表。它只负责热点跟踪，不做产品匹配、用户痛点推断、机会判断或内容建议。",
+        features: [
+          "获取 UApiPro 小红书热榜",
+          "保留排名、标题、热度值、链接、抓取时间",
+          "输出中立热点跟踪报告",
+          "作为后续产品匹配和选题卡生成的输入"
+        ],
+        zip: "dist/shouba-hotspot-tracking.zip",
+        doc: "docs/瘦吧热点跟踪skill_使用说明.md",
+        skillMd: "skills/shouba-hotspot-tracking/SKILL.md"
+      },
+      {
+        id: "shouba-xhs-topic-card",
+        name: "瘦吧小红书选题卡skill",
+        category: "小红书运营",
+        categoryDesc: "热点、趋势、内容机会",
+        icon: "卡",
+        version: "v0.1.0",
+        status: "已安装包",
+        level: "下游",
+        tags: ["产品匹配", "选题卡", "内容智能体输入"],
+        description: "基于热点数据和用户提供的产品库，评估热点与产品的匹配度，并输出标准化小红书选题卡，交给后续内容智能体生成文案。",
+        features: [
+          "接收热点数据和产品库",
+          "评估话题、场景、痛点和产品植入自然度",
+          "输出标准化小红书选题卡",
+          "为小红书内容智能体提供结构化输入"
+        ],
+        zip: "dist/shouba-xhs-topic-card.zip",
+        doc: "docs/瘦吧小红书选题卡skill_使用说明.md",
+        skillMd: "skills/shouba-xhs-topic-card/SKILL.md"
+      }
+    ];
+
+    const futureCategories = [
+      { name: "品牌内容", desc: "品牌策略、内容规范", icon: "品" },
+      { name: "私域转化", desc: "话术、线索、成交", icon: "私" },
+      { name: "培训赋能", desc: "课件、训练营、复盘", icon: "训" },
+      { name: "数据分析", desc: "报表、洞察、看板", icon: "数" }
+    ];
+
+    let currentCategory = "全部";
+    let keyword = "";
+
+    const categoryList = document.getElementById("categoryList");
+    const skillGrid = document.getElementById("skillGrid");
+    const currentTitle = document.getElementById("currentTitle");
+    const currentDesc = document.getElementById("currentDesc");
+    const totalCount = document.getElementById("totalCount");
+    const visibleCount = document.getElementById("visibleCount");
+    const searchInput = document.getElementById("searchInput");
+    const heroMeta = document.getElementById("heroMeta");
+
+    function getCategories() {
+      const map = new Map();
+      skillCatalog.forEach(skill => {
+        if (!map.has(skill.category)) {
+          map.set(skill.category, {
+            name: skill.category,
+            desc: skill.categoryDesc || "",
+            icon: skill.icon || skill.category.slice(0, 1),
+            count: 0,
+            enabled: true
+          });
+        }
+        map.get(skill.category).count += 1;
+      });
+
+      futureCategories.forEach(cat => {
+        if (!map.has(cat.name)) {
+          map.set(cat.name, { ...cat, count: 0, enabled: false });
+        }
+      });
+
+      return [
+        { name: "全部", desc: "所有已归档 Skill", icon: "全", count: skillCatalog.length, enabled: true },
+        ...Array.from(map.values())
+      ];
+    }
+
+    function renderHeroMeta() {
+      const categories = getCategories();
+      const activeCategories = categories.filter(cat => cat.name !== "全部" && cat.count > 0).length;
+      heroMeta.innerHTML = `
+        <span class="hero-pill">已归档 Skill：${skillCatalog.length} 个</span>
+        <span class="hero-pill">已启用类目：${activeCategories} 个</span>
+        <span class="hero-pill">支持：说明文档 / SKILL.md / zip 下载</span>
+      `;
+    }
+
+    function renderCategories() {
+      const categories = getCategories();
+      categoryList.innerHTML = categories.map(cat => `
+        <button class="category-btn ${cat.name === currentCategory ? "active" : ""}" data-category="${cat.name}" ${cat.enabled ? "" : "disabled"} title="${cat.enabled ? cat.name : "预留类目，后续可扩展"}">
+          <span class="cat-main">
+            <span class="cat-icon">${cat.icon}</span>
+            <span>
+              <span class="cat-name">${cat.name}</span>
+              <span class="cat-desc">${cat.desc}${cat.enabled ? "" : " · 预留"}</span>
+            </span>
+          </span>
+          <span class="cat-count">${cat.count}</span>
+        </button>
+      `).join("");
+
+      categoryList.querySelectorAll(".category-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (btn.disabled) return;
+          currentCategory = btn.dataset.category;
+          render();
+        });
+      });
+    }
+
+    function matchesKeyword(skill) {
+      if (!keyword) return true;
+      const haystack = [
+        skill.name,
+        skill.id,
+        skill.category,
+        skill.description,
+        ...(skill.tags || []),
+        ...(skill.features || [])
+      ].join(" ").toLowerCase();
+      return haystack.includes(keyword.toLowerCase());
+    }
+
+    function getVisibleSkills() {
+      return skillCatalog.filter(skill => {
+        const inCategory = currentCategory === "全部" || skill.category === currentCategory;
+        return inCategory && matchesKeyword(skill);
+      });
+    }
+
+    function renderToolbar(visible) {
+      const categories = getCategories();
+      const current = categories.find(cat => cat.name === currentCategory) || categories[0];
+      currentTitle.textContent = currentCategory === "全部" ? "全部 Skill" : current.name;
+      currentDesc.textContent = currentCategory === "全部"
+        ? "查看当前仓库中的全部 Skill。"
+        : current.desc || "查看该类目下的 Skill。";
+      totalCount.textContent = skillCatalog.length;
+      visibleCount.textContent = visible.length;
+    }
+
+    function renderSkills() {
+      const visible = getVisibleSkills();
+      renderToolbar(visible);
+
+      if (!visible.length) {
+        skillGrid.innerHTML = `<div class="empty">没有找到匹配的 Skill。可以换一个关键词，或在 skillCatalog 中继续添加新 Skill。</div>`;
+        return;
+      }
+
+      skillGrid.innerHTML = visible.map(skill => `
+        <article class="skill-card">
+          <div class="skill-top">
+            <div class="badges">
+              <span class="badge hot">${skill.level}</span>
+              <span class="badge">${skill.category}</span>
+              <span class="badge beta">${skill.status}</span>
+            </div>
+            <span class="version">${skill.version}</span>
+          </div>
+          <h3 class="skill-title">${skill.name}</h3>
+          <span class="skill-id">${skill.id}</span>
+          <p class="desc">${skill.description}</p>
+          <ul class="features">
+            ${skill.features.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+          <div class="actions">
+            <a class="btn btn-green" href="${skill.zip}" download>下载安装包</a>
+            <a class="btn btn-soft" href="${skill.doc}">使用说明</a>
+            <a class="btn btn-line" href="${skill.skillMd}">查看 SKILL.md</a>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function render() {
+      renderHeroMeta();
+      renderCategories();
+      renderSkills();
+    }
+
+    searchInput.addEventListener("input", event => {
+      keyword = event.target.value.trim();
+      renderSkills();
+    });
+
+    render();
+  </script>
 </body>
 </html>
