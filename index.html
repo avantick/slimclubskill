@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>瘦吧 WorkBuddy Skill 中心</title>
+  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <title>瘦吧 WorkBuddy Skill 中心网页版</title>
   <style>
     :root {
       --green-950: #0d2d23;
@@ -22,10 +22,15 @@
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(18, 56, 43, 0.12);
       --radius: 22px;
-      --sidebar-width: 280px;
+      --sidebar-width: 300px;
+      --content-min: 920px;
     }
 
     * { box-sizing: border-box; }
+
+    html {
+      min-width: 1280px;
+    }
 
     body {
       margin: 0;
@@ -41,16 +46,17 @@
     a { color: inherit; }
 
     .page {
-      max-width: 1440px;
+      width: 1280px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 24px 20px 48px;
+      padding: 32px 32px 56px;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
       border-radius: 32px;
-      padding: 38px 42px;
+      padding: 44px 52px;
       color: var(--white);
       background:
         linear-gradient(135deg, rgba(18, 56, 43, 0.98), rgba(29, 107, 76, 0.95)),
@@ -83,7 +89,7 @@
 
     h1 {
       margin: 18px 0 12px;
-      font-size: clamp(34px, 4.2vw, 56px);
+      font-size: 54px;
       line-height: 1.04;
       letter-spacing: -0.05em;
     }
@@ -116,8 +122,8 @@
 
     .layout {
       display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
-      gap: 22px;
+      grid-template-columns: var(--sidebar-width) minmax(var(--content-min), 1fr);
+      gap: 24px;
       align-items: start;
       margin-top: 24px;
     }
@@ -311,8 +317,8 @@
 
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .skill-card {
@@ -320,10 +326,10 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 12px 34px rgba(18, 56, 43, 0.08);
-      padding: 22px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      min-height: 330px;
+      min-height: 360px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -476,31 +482,33 @@
       font-size: 13px;
     }
 
-    @media (max-width: 980px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; max-height: none; }
-      .category-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .skill-grid { grid-template-columns: 1fr; }
-      .guide { grid-template-columns: 1fr; }
+    @media (min-width: 1500px) {
+      .page {
+        width: 1440px;
+        max-width: 1440px;
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
-    @media (max-width: 620px) {
-      .page { padding: 16px 12px 36px; }
-      .hero { padding: 30px 22px; border-radius: 24px; }
-      .toolbar { display: block; }
-      .stats { justify-content: flex-start; margin-top: 14px; }
-      .category-list { grid-template-columns: 1fr; }
-      .actions { flex-direction: column; }
-      .btn { width: 100%; }
+    @media print {
+      html { min-width: 0; }
+      body { background: #ffffff; }
+      .page { width: auto; max-width: none; padding: 0; }
+      .sidebar, .actions { display: none; }
+      .layout { display: block; }
+      .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <section class="hero">
-      <span class="eyebrow">瘦吧 · WorkBuddy Skill Library</span>
-      <h1>可扩展 Skill 中心</h1>
-      <p>面向未来上百个 Skill 的统一展示页：左侧按业务类目筛选，右侧以卡片展示 Skill 说明、使用文档和安装包下载入口。新增 Skill 时，只需要在页面下方的 skillCatalog 数据中增加一条配置。</p>
+      <span class="eyebrow">瘦吧 · WorkBuddy Skill Library · Desktop Web</span>
+      <h1>可扩展 Skill 中心网页版</h1>
+      <p>面向电脑浏览器和 GitHub Pages 展示场景设计：左侧固定业务类目栏，右侧以桌面卡片网格展示 Skill 说明、使用文档和安装包下载入口。新增 Skill 时，只需要在页面下方的 skillCatalog 数据中增加一条配置。</p>
       <div class="hero-meta" id="heroMeta"></div>
     </section>
 
@@ -539,7 +547,7 @@ cp -R skills/shouba-xhs-topic-card ~/.workbuddy/skills/</pre>
     </section>
 
     <footer class="footer">
-      slimclubskill · GitHub Skill Archive · 支持按类目扩展上百个 WorkBuddy Skill
+      slimclubskill · Desktop Web Skill Archive · 支持按类目扩展上百个 WorkBuddy Skill
     </footer>
   </main>
 
@@ -641,6 +649,7 @@ cp -R skills/shouba-xhs-topic-card ~/.workbuddy/skills/</pre>
       heroMeta.innerHTML = `
         <span class="hero-pill">已归档 Skill：${skillCatalog.length} 个</span>
         <span class="hero-pill">已启用类目：${activeCategories} 个</span>
+        <span class="hero-pill">桌面网页版：1280px 固定工作区</span>
         <span class="hero-pill">支持：说明文档 / SKILL.md / zip 下载</span>
       `;
     }
