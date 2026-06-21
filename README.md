@@ -2,11 +2,22 @@
 
 瘦吧 WorkBuddy Skill 归档仓库，用于保存小红书热点跟踪与小红书选题卡生成相关 Skill。
 
+## H5 展示页
+
+下载仓库后，可直接打开：
+
+```text
+index.html
+```
+
+页面中可以查看两个 Skill、对应使用说明，并点击下载 `dist/` 目录中的 Skill 安装包。
+
 ## 仓库内容
 
 ```text
 slimclubskill/
 ├── README.md
+├── index.html
 ├── .gitignore
 ├── skills/
 │   ├── shouba-hotspot-tracking/

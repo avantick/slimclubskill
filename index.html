@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>瘦吧 WorkBuddy Skill 中心</title>
+  <style>
+    :root {
+      --green-900: #12382b;
+      --green-800: #17513d;
+      --green-700: #1d6b4c;
+      --green-600: #23865e;
+      --green-100: #e7f6ee;
+      --green-50: #f4fbf7;
+      --yellow: #ffe9a8;
+      --text: #18342a;
+      --muted: #6b7d75;
+      --line: #dcebe4;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(18, 56, 43, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 233, 168, 0.55), transparent 32%),
+        radial-gradient(circle at 90% 10%, rgba(35, 134, 94, 0.18), transparent 28%),
+        linear-gradient(180deg, #f7fbf8 0%, #eff8f3 48%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 54px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      padding: 44px 42px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(18, 56, 43, 0.98), rgba(29, 107, 76, 0.95)),
+        url("data:image/svg+xml,%3Csvg width='500' height='300' viewBox='0 0 500 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.18)' stroke-width='1'%3E%3Cpath d='M20 250 C120 120 190 180 280 70 S430 95 480 20'/%3E%3Cpath d='M0 180 C110 70 210 220 330 110 S430 90 510 150'/%3E%3C/g%3E%3C/svg%3E");
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -90px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 233, 168, 0.22);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+
+    h1 {
+      margin: 22px 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--yellow); color: #314018; box-shadow: 0 12px 28px rgba(0,0,0,0.16); }
+    .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.09); }
+    .btn-green { background: var(--green-700); color: var(--white); }
+    .btn-soft { background: var(--green-100); color: var(--green-800); }
+    .btn-line { border-color: var(--line); color: var(--green-800); background: var(--white); }
+
+    .section { margin-top: 34px; }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-note {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(220, 235, 228, 0.94);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(18, 56, 43, 0.08);
+      padding: 24px;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--green-50);
+      color: var(--green-800);
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .skill-title {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--green-900);
+    }
+
+    .skill-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--muted);
+      font-size: 13px;
+      background: #f7faf8;
+      padding: 7px 9px;
+      border-radius: 10px;
+      display: inline-block;
+      word-break: break-all;
+    }
+
+    .desc {
+      color: #40594f;
+      line-height: 1.75;
+      margin: 16px 0;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: #40594f;
+      line-height: 1.9;
+    }
+
+    .actions {
+      margin-top: auto;
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      position: relative;
+      min-height: 150px;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green-700);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .step h3 { margin: 0 0 8px; font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .install {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      padding: 18px;
+      border-radius: 18px;
+      background: #102b22;
+      color: #eaf8ef;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .small { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    .footer {
+      margin-top: 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 34px 24px; }
+      .grid, .install, .workflow { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .hero-actions, .actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="eyebrow">瘦吧 · WorkBuddy Skill Center</span>
+      <h1>小红书热点跟踪与选题卡 Skill</h1>
+      <p>这个页面用于展示 GitHub 仓库中的两个 WorkBuddy Skill。用户下载仓库后，可直接打开本页面查看 Skill 说明、阅读使用文档，并点击下载对应 Skill 安装包。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="dist/shouba-hotspot-tracking.zip" download>下载热点跟踪 Skill</a>
+        <a class="btn btn-primary" href="dist/shouba-xhs-topic-card.zip" download>下载选题卡 Skill</a>
+        <a class="btn btn-ghost" href="README.md">查看 README</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>仓库中的 Skill</h2>
+          <p class="section-note">两个 Skill 形成一条清晰链路：先中立跟踪热点，再结合产品库生成选题卡。</p>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card skill-card">
+          <div class="skill-top">
+            <span class="badge">上游 · 热点数据</span>
+            <span class="badge">中立抓取</span>
+          </div>
+          <h3 class="skill-title">瘦吧热点跟踪skill</h3>
+          <span class="skill-id">skills/shouba-hotspot-tracking</span>
+          <p class="desc">从 UApiPro 获取小红书热榜，输出原始、可追溯的热点列表。它只负责热点跟踪，不做产品匹配、用户痛点推断、机会判断或内容建议。</p>
+          <ul class="list">
+            <li>获取 UApiPro 小红书热榜</li>
+            <li>保留排名、标题、热度值、链接、抓取时间</li>
+            <li>输出中立热点跟踪报告</li>
+            <li>作为后续产品匹配和选题卡生成的输入</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-green" href="dist/shouba-hotspot-tracking.zip" download>下载安装包</a>
+            <a class="btn btn-soft" href="docs/瘦吧热点跟踪skill_使用说明.md">使用说明</a>
+            <a class="btn btn-line" href="skills/shouba-hotspot-tracking/SKILL.md">查看 SKILL.md</a>
+          </div>
+        </article>
+
+        <article class="card skill-card">
+          <div class="skill-top">
+            <span class="badge">下游 · 业务转化</span>
+            <span class="badge">产品匹配</span>
+          </div>
+          <h3 class="skill-title">瘦吧小红书选题卡skill</h3>
+          <span class="skill-id">skills/shouba-xhs-topic-card</span>
+          <p class="desc">基于热点数据和用户提供的产品库，评估热点与产品的匹配度，并输出标准化小红书选题卡，交给后续内容智能体生成文案。</p>
+          <ul class="list">
+            <li>接收热点数据和产品库</li>
+            <li>评估话题、场景、痛点和产品植入自然度</li>
+            <li>输出小红书选题卡</li>
+            <li>为内容智能体提供结构化输入</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-green" href="dist/shouba-xhs-topic-card.zip" download>下载安装包</a>
+            <a class="btn btn-soft" href="docs/瘦吧小红书选题卡skill_使用说明.md">使用说明</a>
+            <a class="btn btn-line" href="skills/shouba-xhs-topic-card/SKILL.md">查看 SKILL.md</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>推荐使用流程</h2>
+          <p class="section-note">这个流程可以用于培训演示，也可以作为内容团队的日常小红书选题工作流。</p>
+        </div>
+      </div>
+      <div class="workflow">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>跟踪热点</h3>
+          <p>使用“瘦吧热点跟踪skill”从 UApiPro 获取当前小红书热榜，只保留原始热点数据。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>输入产品库</h3>
+          <p>提供产品名称、卖点、人群、场景、用户痛点、可表达利益点和风险边界。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>生成选题卡</h3>
+          <p>使用“瘦吧小红书选题卡skill”评估热点与产品匹配度，并生成标准选题卡。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>交给智能体</h3>
+          <p>把选题卡交给小红书内容智能体，继续生成标题、封面、正文和评论引导。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>下载后如何安装</h2>
+          <p class="section-note">下载 zip 后，可解压到 WorkBuddy 用户 Skill 目录，或按团队内部流程导入。</p>
+        </div>
+      </div>
+      <div class="install">
+        <div class="card">
+          <h3>方式一：通过页面下载</h3>
+          <p class="desc">点击上方“下载安装包”，下载对应 zip 文件，再按照 WorkBuddy 的 Skill 导入流程安装。</p>
+          <div class="actions">
+            <a class="btn btn-green" href="dist/shouba-hotspot-tracking.zip" download>下载热点跟踪 Skill</a>
+            <a class="btn btn-green" href="dist/shouba-xhs-topic-card.zip" download>下载选题卡 Skill</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>方式二：手动复制源码目录</h3>
+          <pre>cp -R skills/shouba-hotspot-tracking ~/.workbuddy/skills/
+cp -R skills/shouba-xhs-topic-card ~/.workbuddy/skills/</pre>
+          <p class="small">复制后如 WorkBuddy 未立即识别，可重启 WorkBuddy 或重新打开对话。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      slimclubskill · GitHub Skill Archive · 本页面可本地打开，也可通过 GitHub Pages 发布。
+    </footer>
+  </main>
+</body>
+</html>
