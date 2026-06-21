@@ -554,53 +554,1467 @@ cp -R skills/shouba-xhs-topic-card ~/.workbuddy/skills/</pre>
   <script>
     const skillCatalog = [
       {
-        id: "shouba-hotspot-tracking",
-        name: "瘦吧热点跟踪skill",
-        category: "小红书运营",
-        categoryDesc: "热点、趋势、内容机会",
-        icon: "热",
-        version: "v0.1.0",
-        status: "已安装包",
-        level: "上游",
-        tags: ["中立抓取", "UApiPro", "小红书热榜"],
-        description: "从 UApiPro 获取小红书热榜，输出原始、可追溯的热点列表。它只负责热点跟踪，不做产品匹配、用户痛点推断、机会判断或内容建议。",
-        features: [
-          "获取 UApiPro 小红书热榜",
-          "保留排名、标题、热度值、链接、抓取时间",
-          "输出中立热点跟踪报告",
-          "作为后续产品匹配和选题卡生成的输入"
-        ],
-        zip: "dist/shouba-hotspot-tracking.zip",
-        doc: "docs/瘦吧热点跟踪skill_使用说明.md",
-        skillMd: "skills/shouba-hotspot-tracking/SKILL.md"
+            "id": "shouba-hotspot-tracking",
+            "name": "瘦吧热点跟踪skill",
+            "category": "小红书运营",
+            "categoryDesc": "热点、趋势、内容机会",
+            "icon": "热",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "上游",
+            "tags": [
+                  "中立抓取",
+                  "UApiPro",
+                  "小红书热榜"
+            ],
+            "description": "从 UApiPro 获取小红书热榜，输出原始、可追溯的热点列表。它只负责热点跟踪，不做产品匹配、用户痛点推断、机会判断或内容建议。",
+            "features": [
+                  "获取 UApiPro 小红书热榜",
+                  "保留排名、标题、热度值、链接、抓取时间",
+                  "输出中立热点跟踪报告",
+                  "作为后续产品匹配和选题卡生成的输入"
+            ],
+            "zip": "dist/shouba-hotspot-tracking.zip",
+            "doc": "docs/瘦吧热点跟踪skill_使用说明.md",
+            "skillMd": "skills/shouba-hotspot-tracking/SKILL.md"
       },
       {
-        id: "shouba-xhs-topic-card",
-        name: "瘦吧小红书选题卡skill",
-        category: "小红书运营",
-        categoryDesc: "热点、趋势、内容机会",
-        icon: "卡",
-        version: "v0.1.0",
-        status: "已安装包",
-        level: "下游",
-        tags: ["产品匹配", "选题卡", "内容智能体输入"],
-        description: "基于热点数据和用户提供的产品库，评估热点与产品的匹配度，并输出标准化小红书选题卡，交给后续内容智能体生成文案。",
-        features: [
-          "接收热点数据和产品库",
-          "评估话题、场景、痛点和产品植入自然度",
-          "输出标准化小红书选题卡",
-          "为小红书内容智能体提供结构化输入"
-        ],
-        zip: "dist/shouba-xhs-topic-card.zip",
-        doc: "docs/瘦吧小红书选题卡skill_使用说明.md",
-        skillMd: "skills/shouba-xhs-topic-card/SKILL.md"
+            "id": "shouba-xhs-topic-card",
+            "name": "瘦吧小红书选题卡skill",
+            "category": "小红书运营",
+            "categoryDesc": "热点、趋势、内容机会",
+            "icon": "卡",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "下游",
+            "tags": [
+                  "产品匹配",
+                  "选题卡",
+                  "内容智能体输入"
+            ],
+            "description": "基于热点数据和用户提供的产品库，评估热点与产品的匹配度，并输出标准化小红书选题卡，交给后续内容智能体生成文案。",
+            "features": [
+                  "接收热点数据和产品库",
+                  "评估话题、场景、痛点和产品植入自然度",
+                  "输出标准化小红书选题卡",
+                  "为小红书内容智能体提供结构化输入"
+            ],
+            "zip": "dist/shouba-xhs-topic-card.zip",
+            "doc": "docs/瘦吧小红书选题卡skill_使用说明.md",
+            "skillMd": "skills/shouba-xhs-topic-card/SKILL.md"
+      },
+      {
+            "id": "ai-figure-warmup",
+            "name": "AI 图片热身任务",
+            "category": "工具与热身",
+            "categoryDesc": "AI 提示词",
+            "icon": "图",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "AI 提示词",
+            "tags": [
+                  "AI 提示词",
+                  "工具与热身",
+                  "AI提示词"
+            ],
+            "description": "根据上传人物照片生成手办、职业肖像等图像创意提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/ai-figure-warmup.zip",
+            "doc": "docs/ai-figure-warmup_使用说明.md",
+            "skillMd": "skills/ai-figure-warmup/SKILL.md"
+      },
+      {
+            "id": "brand-goal-alignment",
+            "name": "品牌项目目标对齐",
+            "category": "品牌策略",
+            "categoryDesc": "新品开发",
+            "icon": "齐",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品牌策略",
+                  "AI提示词"
+            ],
+            "description": "在开始品牌/产品项目之前，先收集公司、角色、品类和目标，建立统一上下文。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/brand-goal-alignment.zip",
+            "doc": "docs/brand-goal-alignment_使用说明.md",
+            "skillMd": "skills/brand-goal-alignment/SKILL.md"
+      },
+      {
+            "id": "brand-naming-prompt",
+            "name": "品牌命名提示词",
+            "category": "品牌策略",
+            "categoryDesc": "新品开发",
+            "icon": "名",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品牌策略",
+                  "AI提示词"
+            ],
+            "description": "为新品或品牌生成、评估和迭代中文品牌名。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/brand-naming-prompt.zip",
+            "doc": "docs/brand-naming-prompt_使用说明.md",
+            "skillMd": "skills/brand-naming-prompt/SKILL.md"
+      },
+      {
+            "id": "product-meme-nickname",
+            "name": "产品昵称造梗",
+            "category": "品牌策略",
+            "categoryDesc": "新品开发",
+            "icon": "梗",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品牌策略",
+                  "AI提示词"
+            ],
+            "description": "围绕产品核心卖点生成具传播力的昵称、梗名和口语化记忆点。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/product-meme-nickname.zip",
+            "doc": "docs/product-meme-nickname_使用说明.md",
+            "skillMd": "skills/product-meme-nickname/SKILL.md"
+      },
+      {
+            "id": "category-segmentation",
+            "name": "细分品类拆解",
+            "category": "品类洞察",
+            "categoryDesc": "新品开发",
+            "icon": "类",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品类洞察",
+                  "AI提示词"
+            ],
+            "description": "拆解母品类、细分维度和价值进化路径。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/category-segmentation.zip",
+            "doc": "docs/category-segmentation_使用说明.md",
+            "skillMd": "skills/category-segmentation/SKILL.md"
+      },
+      {
+            "id": "category-evaluation",
+            "name": "细分品类评估",
+            "category": "品类洞察",
+            "categoryDesc": "新品开发",
+            "icon": "评",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品类洞察",
+                  "AI提示词"
+            ],
+            "description": "从规模、增速、竞争、机会和风险评估细分品类。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/category-evaluation.zip",
+            "doc": "docs/category-evaluation_使用说明.md",
+            "skillMd": "skills/category-evaluation/SKILL.md"
+      },
+      {
+            "id": "industry-trend-analysis",
+            "name": "行业趋势分析",
+            "category": "品类洞察",
+            "categoryDesc": "新品开发",
+            "icon": "趋",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "品类洞察",
+                  "AI提示词"
+            ],
+            "description": "分析行业趋势、增长动力、风险和品牌机会。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/industry-trend-analysis.zip",
+            "doc": "docs/industry-trend-analysis_使用说明.md",
+            "skillMd": "skills/industry-trend-analysis/SKILL.md"
+      },
+      {
+            "id": "target-user-segmentation",
+            "name": "目标用户细分",
+            "category": "用户洞察",
+            "categoryDesc": "新品开发",
+            "icon": "人",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "用户洞察",
+                  "AI提示词"
+            ],
+            "description": "基于消费行为和场景识别目标用户画像。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/target-user-segmentation.zip",
+            "doc": "docs/target-user-segmentation_使用说明.md",
+            "skillMd": "skills/target-user-segmentation/SKILL.md"
+      },
+      {
+            "id": "pain-delight-itch-insight",
+            "name": "痛点爽点痒点洞察",
+            "category": "用户洞察",
+            "categoryDesc": "新品开发",
+            "icon": "痛",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "用户洞察",
+                  "AI提示词"
+            ],
+            "description": "拆解用户行为节点，提炼痛点、爽点、痒点和产品机会。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/pain-delight-itch-insight.zip",
+            "doc": "docs/pain-delight-itch-insight_使用说明.md",
+            "skillMd": "skills/pain-delight-itch-insight/SKILL.md"
+      },
+      {
+            "id": "persona-visual-prompt",
+            "name": "用户画像可视化",
+            "category": "用户洞察",
+            "categoryDesc": "新品开发",
+            "icon": "像",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "用户洞察",
+                  "AI提示词"
+            ],
+            "description": "把用户画像转成可用于生成插画或 PPT 的视觉提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/persona-visual-prompt.zip",
+            "doc": "docs/persona-visual-prompt_使用说明.md",
+            "skillMd": "skills/persona-visual-prompt/SKILL.md"
+      },
+      {
+            "id": "persona-ppt-onepage",
+            "name": "一页用户画像PPT",
+            "category": "用户洞察",
+            "categoryDesc": "新品开发",
+            "icon": "P",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "用户洞察",
+                  "AI提示词"
+            ],
+            "description": "生成一页用户画像 PPT 的内容结构与表达。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/persona-ppt-onepage.zip",
+            "doc": "docs/persona-ppt-onepage_使用说明.md",
+            "skillMd": "skills/persona-ppt-onepage/SKILL.md"
+      },
+      {
+            "id": "brand-core-value",
+            "name": "品牌核心价值提炼",
+            "category": "产品概念",
+            "categoryDesc": "新品开发",
+            "icon": "核",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品概念",
+                  "AI提示词"
+            ],
+            "description": "提炼品牌核心价值、用户承诺和概念表达。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/brand-core-value.zip",
+            "doc": "docs/brand-core-value_使用说明.md",
+            "skillMd": "skills/brand-core-value/SKILL.md"
+      },
+      {
+            "id": "product-trust-proof",
+            "name": "产品信任状提炼",
+            "category": "产品概念",
+            "categoryDesc": "新品开发",
+            "icon": "信",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品概念",
+                  "AI提示词"
+            ],
+            "description": "将成分、技术、数据、背书转化为用户能理解的信任状。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/product-trust-proof.zip",
+            "doc": "docs/product-trust-proof_使用说明.md",
+            "skillMd": "skills/product-trust-proof/SKILL.md"
+      },
+      {
+            "id": "product-concept-prompt",
+            "name": "产品Concept生成",
+            "category": "产品概念",
+            "categoryDesc": "新品开发",
+            "icon": "C",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品概念",
+                  "AI提示词"
+            ],
+            "description": "生成完整产品 concept，包括人群、场景、价值、信任状和表达。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/product-concept-prompt.zip",
+            "doc": "docs/product-concept-prompt_使用说明.md",
+            "skillMd": "skills/product-concept-prompt/SKILL.md"
+      },
+      {
+            "id": "selling-point-to-buying-point",
+            "name": "卖点变买点",
+            "category": "产品内容",
+            "categoryDesc": "新品开发",
+            "icon": "买",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品内容",
+                  "AI提示词"
+            ],
+            "description": "把产品卖点转化为用户视角买点和心动文案。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/selling-point-to-buying-point.zip",
+            "doc": "docs/selling-point-to-buying-point_使用说明.md",
+            "skillMd": "skills/selling-point-to-buying-point/SKILL.md"
+      },
+      {
+            "id": "technical-selling-point-copy",
+            "name": "技术功能卖点文案",
+            "category": "产品内容",
+            "categoryDesc": "新品开发",
+            "icon": "技",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品内容",
+                  "AI提示词"
+            ],
+            "description": "把技术、成分、功能机制写成具象、可感知的卖点文案。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/technical-selling-point-copy.zip",
+            "doc": "docs/technical-selling-point-copy_使用说明.md",
+            "skillMd": "skills/technical-selling-point-copy/SKILL.md"
+      },
+      {
+            "id": "emotional-selling-point-copy",
+            "name": "卖点情绪化文案",
+            "category": "产品内容",
+            "categoryDesc": "新品开发",
+            "icon": "情",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "产品内容",
+                  "AI提示词"
+            ],
+            "description": "将卖点转化为更有情绪价值和场景感染力的表达。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/emotional-selling-point-copy.zip",
+            "doc": "docs/emotional-selling-point-copy_使用说明.md",
+            "skillMd": "skills/emotional-selling-point-copy/SKILL.md"
+      },
+      {
+            "id": "ppt-oneclick-generator",
+            "name": "一键生成PPT大纲",
+            "category": "培训与提案",
+            "categoryDesc": "新品开发",
+            "icon": "P",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "新品开发",
+            "tags": [
+                  "新品开发",
+                  "培训与提案",
+                  "AI提示词"
+            ],
+            "description": "根据项目资料生成结构化 PPT 大纲与页面内容。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/ppt-oneclick-generator.zip",
+            "doc": "docs/ppt-oneclick-generator_使用说明.md",
+            "skillMd": "skills/ppt-oneclick-generator/SKILL.md"
+      },
+      {
+            "id": "ecommerce-detail-page",
+            "name": "电商详情页策划",
+            "category": "电商内容",
+            "categoryDesc": "品牌资产",
+            "icon": "详",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "电商内容",
+                  "AI提示词"
+            ],
+            "description": "把产品卖点组织成电商详情页屏次、标题、视觉和转化逻辑。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/ecommerce-detail-page.zip",
+            "doc": "docs/ecommerce-detail-page_使用说明.md",
+            "skillMd": "skills/ecommerce-detail-page/SKILL.md"
+      },
+      {
+            "id": "brand-story-writing",
+            "name": "品牌故事写作",
+            "category": "品牌内容",
+            "categoryDesc": "品牌资产",
+            "icon": "故",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "品牌内容",
+                  "AI提示词"
+            ],
+            "description": "围绕产品、人群、卖点和信任状撰写品牌故事。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/brand-story-writing.zip",
+            "doc": "docs/brand-story-writing_使用说明.md",
+            "skillMd": "skills/brand-story-writing/SKILL.md"
+      },
+      {
+            "id": "personal-ip-story",
+            "name": "个人IP故事挖掘",
+            "category": "品牌内容",
+            "categoryDesc": "品牌资产",
+            "icon": "IP",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "品牌内容",
+                  "AI提示词"
+            ],
+            "description": "先挖掘真实经历与人物特质，再构建个人 IP 故事结构。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/personal-ip-story.zip",
+            "doc": "docs/personal-ip-story_使用说明.md",
+            "skillMd": "skills/personal-ip-story/SKILL.md"
+      },
+      {
+            "id": "product-packaging-design",
+            "name": "产品包装设计提示词",
+            "category": "产品视觉",
+            "categoryDesc": "品牌资产",
+            "icon": "包",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "产品视觉",
+                  "AI提示词"
+            ],
+            "description": "生成产品包装视觉方向、画面描述和 AI 绘图提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/product-packaging-design.zip",
+            "doc": "docs/product-packaging-design_使用说明.md",
+            "skillMd": "skills/product-packaging-design/SKILL.md"
+      },
+      {
+            "id": "brand-ip-design",
+            "name": "品牌IP设计提示词",
+            "category": "产品视觉",
+            "categoryDesc": "品牌资产",
+            "icon": "角",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "产品视觉",
+                  "AI提示词"
+            ],
+            "description": "生成品牌 IP 角色设定、三视图、表情动作和商业应用提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/brand-ip-design.zip",
+            "doc": "docs/brand-ip-design_使用说明.md",
+            "skillMd": "skills/brand-ip-design/SKILL.md"
+      },
+      {
+            "id": "account-persona-design",
+            "name": "账号人设设计",
+            "category": "品牌内容",
+            "categoryDesc": "品牌资产",
+            "icon": "号",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "品牌资产",
+            "tags": [
+                  "品牌资产",
+                  "品牌内容",
+                  "AI提示词"
+            ],
+            "description": "设计社媒账号人设、内容风格、语气调性和互动话术。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/account-persona-design.zip",
+            "doc": "docs/account-persona-design_使用说明.md",
+            "skillMd": "skills/account-persona-design/SKILL.md"
+      },
+      {
+            "id": "marketing-big-idea",
+            "name": "营销大创意",
+            "category": "营销策划",
+            "categoryDesc": "营销策划",
+            "icon": "创",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "营销策划",
+            "tags": [
+                  "营销策划",
+                  "营销策划",
+                  "AI提示词"
+            ],
+            "description": "基于品牌价值和用户洞察生成可长期延展的营销大创意。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/marketing-big-idea.zip",
+            "doc": "docs/marketing-big-idea_使用说明.md",
+            "skillMd": "skills/marketing-big-idea/SKILL.md"
+      },
+      {
+            "id": "product-creative-poster",
+            "name": "产品创意海报",
+            "category": "营销策划",
+            "categoryDesc": "营销策划",
+            "icon": "海",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "营销策划",
+            "tags": [
+                  "营销策划",
+                  "营销策划",
+                  "AI提示词"
+            ],
+            "description": "为产品卖点生成创意海报主题、文案和视觉提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/product-creative-poster.zip",
+            "doc": "docs/product-creative-poster_使用说明.md",
+            "skillMd": "skills/product-creative-poster/SKILL.md"
+      },
+      {
+            "id": "emotional-marketing-copy",
+            "name": "情绪营销文案",
+            "category": "营销策划",
+            "categoryDesc": "营销策划",
+            "icon": "绪",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "营销策划",
+            "tags": [
+                  "营销策划",
+                  "营销策划",
+                  "AI提示词"
+            ],
+            "description": "生成具情绪共鸣、态度表达和社交传播力的文案。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/emotional-marketing-copy.zip",
+            "doc": "docs/emotional-marketing-copy_使用说明.md",
+            "skillMd": "skills/emotional-marketing-copy/SKILL.md"
+      },
+      {
+            "id": "scene-breakdown",
+            "name": "使用场景拆解",
+            "category": "场景种草",
+            "categoryDesc": "内容种草",
+            "icon": "场",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "场景种草",
+                  "AI提示词"
+            ],
+            "description": "全量拆解产品使用场景和用户需求。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/scene-breakdown.zip",
+            "doc": "docs/scene-breakdown_使用说明.md",
+            "skillMd": "skills/scene-breakdown/SKILL.md"
+      },
+      {
+            "id": "scene-classification",
+            "name": "场景四象限分类",
+            "category": "场景种草",
+            "categoryDesc": "内容种草",
+            "icon": "象",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "场景种草",
+                  "AI提示词"
+            ],
+            "description": "按高频/低频、刚需/非刚需对场景做四象限归类。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/scene-classification.zip",
+            "doc": "docs/scene-classification_使用说明.md",
+            "skillMd": "skills/scene-classification/SKILL.md"
+      },
+      {
+            "id": "scene-evaluation",
+            "name": "场景机会评估",
+            "category": "场景种草",
+            "categoryDesc": "内容种草",
+            "icon": "机",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "场景种草",
+                  "AI提示词"
+            ],
+            "description": "评估哪个场景最适合作为品牌突破口和小红书起势点。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/scene-evaluation.zip",
+            "doc": "docs/scene-evaluation_使用说明.md",
+            "skillMd": "skills/scene-evaluation/SKILL.md"
+      },
+      {
+            "id": "xhs-scene-topic",
+            "name": "小红书场景种草选题",
+            "category": "小红书运营",
+            "categoryDesc": "内容种草",
+            "icon": "种",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "基于优先场景生成小红书种草选题。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-scene-topic.zip",
+            "doc": "docs/xhs-scene-topic_使用说明.md",
+            "skillMd": "skills/xhs-scene-topic/SKILL.md"
+      },
+      {
+            "id": "xhs-scene-workflow",
+            "name": "小红书场景工作流",
+            "category": "小红书运营",
+            "categoryDesc": "内容种草",
+            "icon": "流",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "把场景拆解、评估和选题串成完整工作流。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-scene-workflow.zip",
+            "doc": "docs/xhs-scene-workflow_使用说明.md",
+            "skillMd": "skills/xhs-scene-workflow/SKILL.md"
+      },
+      {
+            "id": "influencer-brief",
+            "name": "达人Brief生成",
+            "category": "达人投放",
+            "categoryDesc": "内容种草",
+            "icon": "达",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "达人投放",
+                  "AI提示词"
+            ],
+            "description": "将产品卖点转化为达人可执行的拍摄 brief。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/influencer-brief.zip",
+            "doc": "docs/influencer-brief_使用说明.md",
+            "skillMd": "skills/influencer-brief/SKILL.md"
+      },
+      {
+            "id": "influencer-brief-skill",
+            "name": "达人Brief Skill工作流",
+            "category": "达人投放",
+            "categoryDesc": "内容种草",
+            "icon": "B",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "内容种草",
+            "tags": [
+                  "内容种草",
+                  "达人投放",
+                  "AI提示词"
+            ],
+            "description": "生成标准化达人 brief 表格、镜头建议和风险边界。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/influencer-brief-skill.zip",
+            "doc": "docs/influencer-brief-skill_使用说明.md",
+            "skillMd": "skills/influencer-brief-skill/SKILL.md"
+      },
+      {
+            "id": "hot-event-marketing",
+            "name": "热点营销创意",
+            "category": "热点营销",
+            "categoryDesc": "热点营销",
+            "icon": "热",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "热点营销",
+            "tags": [
+                  "热点营销",
+                  "热点营销",
+                  "AI提示词"
+            ],
+            "description": "根据热点事件和产品卖点生成借势营销创意。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/hot-event-marketing.zip",
+            "doc": "docs/hot-event-marketing_使用说明.md",
+            "skillMd": "skills/hot-event-marketing/SKILL.md"
+      },
+      {
+            "id": "big-word-poster",
+            "name": "大字海报文案",
+            "category": "热点营销",
+            "categoryDesc": "热点营销",
+            "icon": "字",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "热点营销",
+            "tags": [
+                  "热点营销",
+                  "热点营销",
+                  "AI提示词"
+            ],
+            "description": "将热点或卖点转化为大字海报短句和视觉方向。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/big-word-poster.zip",
+            "doc": "docs/big-word-poster_使用说明.md",
+            "skillMd": "skills/big-word-poster/SKILL.md"
+      },
+      {
+            "id": "xhs-hot-topic",
+            "name": "热点小红书选题",
+            "category": "小红书运营",
+            "categoryDesc": "热点营销",
+            "icon": "红",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "热点营销",
+            "tags": [
+                  "热点营销",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "把热点事件转化为自然植入产品的小红书选题。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-hot-topic.zip",
+            "doc": "docs/xhs-hot-topic_使用说明.md",
+            "skillMd": "skills/xhs-hot-topic/SKILL.md"
+      },
+      {
+            "id": "video-hot-remix",
+            "name": "视频热点复刻",
+            "category": "短视频",
+            "categoryDesc": "热点营销",
+            "icon": "视",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "热点营销",
+            "tags": [
+                  "热点营销",
+                  "短视频",
+                  "AI提示词"
+            ],
+            "description": "将热点视频结构复刻为适合品牌的短视频创意方向。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/video-hot-remix.zip",
+            "doc": "docs/video-hot-remix_使用说明.md",
+            "skillMd": "skills/video-hot-remix/SKILL.md"
+      },
+      {
+            "id": "xhs-viral-topic",
+            "name": "小红书爆款选题",
+            "category": "小红书运营",
+            "categoryDesc": "小红书种草",
+            "icon": "爆",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "用搜索热词、热点采集和人群需求生成小红书爆款选题。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-viral-topic.zip",
+            "doc": "docs/xhs-viral-topic_使用说明.md",
+            "skillMd": "skills/xhs-viral-topic/SKILL.md"
+      },
+      {
+            "id": "xhs-title-writing",
+            "name": "小红书爆款标题",
+            "category": "小红书运营",
+            "categoryDesc": "小红书种草",
+            "icon": "题",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "根据关键词、产品和人群生成小红书爆款标题。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-title-writing.zip",
+            "doc": "docs/xhs-title-writing_使用说明.md",
+            "skillMd": "skills/xhs-title-writing/SKILL.md"
+      },
+      {
+            "id": "xhs-seeding-article",
+            "name": "小红书种草爆文",
+            "category": "小红书运营",
+            "categoryDesc": "小红书种草",
+            "icon": "文",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "生成完整小红书种草笔记正文。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-seeding-article.zip",
+            "doc": "docs/xhs-seeding-article_使用说明.md",
+            "skillMd": "skills/xhs-seeding-article/SKILL.md"
+      },
+      {
+            "id": "xhs-cover-prompt",
+            "name": "小红书封面提示词",
+            "category": "小红书运营",
+            "categoryDesc": "小红书种草",
+            "icon": "封",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "生成小红书封面标题、版式和视觉提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-cover-prompt.zip",
+            "doc": "docs/xhs-cover-prompt_使用说明.md",
+            "skillMd": "skills/xhs-cover-prompt/SKILL.md"
+      },
+      {
+            "id": "xhs-comment-writing",
+            "name": "小红书评论生成",
+            "category": "小红书运营",
+            "categoryDesc": "小红书种草",
+            "icon": "评",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "小红书运营",
+                  "AI提示词"
+            ],
+            "description": "生成具真实感、观点感和互动性的评论。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/xhs-comment-writing.zip",
+            "doc": "docs/xhs-comment-writing_使用说明.md",
+            "skillMd": "skills/xhs-comment-writing/SKILL.md"
+      },
+      {
+            "id": "hanshu-script-generator",
+            "name": "韩束脚本仿写生成器",
+            "category": "短视频",
+            "categoryDesc": "小红书种草",
+            "icon": "脚",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "小红书种草",
+            "tags": [
+                  "小红书种草",
+                  "短视频",
+                  "AI提示词"
+            ],
+            "description": "按爆款五步结构生成美妆/护肤类口播脚本，并控制合规边界。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/hanshu-script-generator.zip",
+            "doc": "docs/hanshu-script-generator_使用说明.md",
+            "skillMd": "skills/hanshu-script-generator/SKILL.md"
+      },
+      {
+            "id": "short-video-creative-script",
+            "name": "短视频创意脚本",
+            "category": "短视频",
+            "categoryDesc": "短视频",
+            "icon": "短",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "短视频",
+                  "AI提示词"
+            ],
+            "description": "把卖点转化为剧情、反转、情绪共鸣或视觉型短视频脚本。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/short-video-creative-script.zip",
+            "doc": "docs/short-video-creative-script_使用说明.md",
+            "skillMd": "skills/short-video-creative-script/SKILL.md"
+      },
+      {
+            "id": "static-frame-prompt",
+            "name": "短视频静帧画面",
+            "category": "短视频",
+            "categoryDesc": "短视频",
+            "icon": "帧",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "短视频",
+                  "AI提示词"
+            ],
+            "description": "为短视频生成关键静帧画面和视觉提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/static-frame-prompt.zip",
+            "doc": "docs/static-frame-prompt_使用说明.md",
+            "skillMd": "skills/static-frame-prompt/SKILL.md"
+      },
+      {
+            "id": "seedance-ad-video",
+            "name": "Seedance品牌广告视频",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "S",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "生成品牌广告类视频提示词和镜头结构。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/seedance-ad-video.zip",
+            "doc": "docs/seedance-ad-video_使用说明.md",
+            "skillMd": "skills/seedance-ad-video/SKILL.md"
+      },
+      {
+            "id": "poster-to-video-prompt",
+            "name": "海报图生成广告视频",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "动",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "将海报图转化为广告视频提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/poster-to-video-prompt.zip",
+            "doc": "docs/poster-to-video-prompt_使用说明.md",
+            "skillMd": "skills/poster-to-video-prompt/SKILL.md"
+      },
+      {
+            "id": "storyboard-grid-prompt",
+            "name": "网格分镜提示词",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "格",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "把文本或视觉图拆成 16 个关键瞬间的分镜提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/storyboard-grid-prompt.zip",
+            "doc": "docs/storyboard-grid-prompt_使用说明.md",
+            "skillMd": "skills/storyboard-grid-prompt/SKILL.md"
+      },
+      {
+            "id": "ecommerce-video-prompt",
+            "name": "电商投放视频提示词",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "投",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "生成产品展示类、口播类电商投放视频提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/ecommerce-video-prompt.zip",
+            "doc": "docs/ecommerce-video-prompt_使用说明.md",
+            "skillMd": "skills/ecommerce-video-prompt/SKILL.md"
+      },
+      {
+            "id": "social-hot-video-prompt",
+            "name": "社媒热点视频提示词",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "媒",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "生成社媒热点类视频创意提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/social-hot-video-prompt.zip",
+            "doc": "docs/social-hot-video-prompt_使用说明.md",
+            "skillMd": "skills/social-hot-video-prompt/SKILL.md"
+      },
+      {
+            "id": "short-drama-video-prompt",
+            "name": "短剧视频提示词",
+            "category": "视频生成",
+            "categoryDesc": "短视频",
+            "icon": "剧",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频生成",
+                  "AI提示词"
+            ],
+            "description": "生成短剧类视频创意和分镜提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/short-drama-video-prompt.zip",
+            "doc": "docs/short-drama-video-prompt_使用说明.md",
+            "skillMd": "skills/short-drama-video-prompt/SKILL.md"
+      },
+      {
+            "id": "one-take-video-effect",
+            "name": "一镜到底视频特效",
+            "category": "视频特效",
+            "categoryDesc": "短视频",
+            "icon": "镜",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频特效",
+                  "AI提示词"
+            ],
+            "description": "生成一镜到底视频特效提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/one-take-video-effect.zip",
+            "doc": "docs/one-take-video-effect_使用说明.md",
+            "skillMd": "skills/one-take-video-effect/SKILL.md"
+      },
+      {
+            "id": "time-freeze-video-effect",
+            "name": "时间静止视频特效",
+            "category": "视频特效",
+            "categoryDesc": "短视频",
+            "icon": "停",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频特效",
+                  "AI提示词"
+            ],
+            "description": "生成时间静止类视频特效提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/time-freeze-video-effect.zip",
+            "doc": "docs/time-freeze-video-effect_使用说明.md",
+            "skillMd": "skills/time-freeze-video-effect/SKILL.md"
+      },
+      {
+            "id": "animal-personification-effect",
+            "name": "动物拟人视频特效",
+            "category": "视频特效",
+            "categoryDesc": "短视频",
+            "icon": "物",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频特效",
+                  "AI提示词"
+            ],
+            "description": "生成动物拟人类视频特效提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/animal-personification-effect.zip",
+            "doc": "docs/animal-personification-effect_使用说明.md",
+            "skillMd": "skills/animal-personification-effect/SKILL.md"
+      },
+      {
+            "id": "split-screen-video-effect",
+            "name": "上下分屏视频特效",
+            "category": "视频特效",
+            "categoryDesc": "短视频",
+            "icon": "屏",
+            "version": "v0.1.0",
+            "status": "已安装包",
+            "level": "短视频",
+            "tags": [
+                  "短视频",
+                  "视频特效",
+                  "AI提示词"
+            ],
+            "description": "生成上下分屏视频特效和主视觉提示词。",
+            "features": [
+                  "沉淀自《AI提示词.pdf》",
+                  "包含原始提示词参考",
+                  "支持按用户输入定制生成",
+                  "带合规与迭代边界"
+            ],
+            "zip": "dist/split-screen-video-effect.zip",
+            "doc": "docs/split-screen-video-effect_使用说明.md",
+            "skillMd": "skills/split-screen-video-effect/SKILL.md"
       }
-    ];
+];
 
     const futureCategories = [
-      { name: "品牌内容", desc: "品牌策略、内容规范", icon: "品" },
-      { name: "私域转化", desc: "话术、线索、成交", icon: "私" },
-      { name: "培训赋能", desc: "课件、训练营、复盘", icon: "训" },
+      { name: "品牌策略", desc: "命名、定位、概念", icon: "品" },
+      { name: "品类洞察", desc: "趋势、赛道、机会", icon: "类" },
+      { name: "用户洞察", desc: "画像、痛点、需求", icon: "人" },
+      { name: "产品内容", desc: "卖点、买点、文案", icon: "卖" },
+      { name: "营销策划", desc: "创意、海报、活动", icon: "创" },
+      { name: "场景种草", desc: "场景、选题、内容", icon: "场" },
+      { name: "达人投放", desc: "brief、脚本、镜头", icon: "达" },
+      { name: "视频生成", desc: "分镜、广告、投放", icon: "视" },
+      { name: "视频特效", desc: "特效、玩法、镜头", icon: "效" },
       { name: "数据分析", desc: "报表、洞察、看板", icon: "数" }
     ];
 
